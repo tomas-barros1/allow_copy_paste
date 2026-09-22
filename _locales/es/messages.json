@@ -1,0 +1,20 @@
+{
+  "extensionName": {
+    "message": "Super Allow Copy & Paste Pro - Desbloqueador Universal"
+  },
+  "extensionDescription": {
+    "message": "La herramienta definitiva para desbloquear copiar, pegar, clic derecho, selección de texto, atajos y arrastrar en cualquier sitio web."
+  },
+  "statusActive": {
+    "message": "Activo"
+  },
+  "statusDisabled": {
+    "message": "Desactivado"
+  },
+  "smartMode": {
+    "message": "Modo Inteligente"
+  },
+  "forceMode": {
+    "message": "Modo Forzar (Ultra)"
+  }
+}

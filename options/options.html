@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Configurações - Super Allow Copy & Paste Pro</title>
+  <link rel="stylesheet" href="options.css">
+</head>
+<body>
+  <div class="app-layout">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="logo-badge">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            <path d="m9 12 2 2 4-4"/>
+          </svg>
+        </div>
+        <div class="brand-info">
+          <h2>Super Allow Copy</h2>
+          <span class="badge">PRO v1.0.0</span>
+        </div>
+      </div>
+
+      <nav class="nav-menu">
+        <button class="nav-item active" data-tab="tab-general">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="3"/>
+            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+          </svg>
+          <span>Geral & Módulos</span>
+        </button>
+        <button class="nav-item" data-tab="tab-domains">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="2" y1="12" x2="22" y2="12"/>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+          </svg>
+          <span>Regras por Domínio</span>
+        </button>
+        <button class="nav-item" data-tab="tab-shortcuts">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="2" y="4" width="20" height="16" rx="2" ry="2"/>
+            <line x1="6" y1="8" x2="6" y2="8"/>
+            <line x1="10" y1="8" x2="10" y2="8"/>
+            <line x1="14" y1="8" x2="14" y2="8"/>
+            <line x1="18" y1="8" x2="18" y2="8"/>
+            <line x1="6" y1="12" x2="6" y2="12"/>
+            <line x1="18" y1="12" x2="18" y2="12"/>
+            <line x1="8" y1="16" x2="16" y2="16"/>
+          </svg>
+          <span>Atalhos de Teclado</span>
+        </button>
+        <button class="nav-item" data-tab="tab-backup">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+            <polyline points="7 10 12 15 17 10"/>
+            <line x1="12" y1="15" x2="12" y2="3"/>
+          </svg>
+          <span>Backup & Restauração</span>
+        </button>
+      </nav>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="content">
+      <!-- General Tab -->
+      <section id="tab-general" class="tab-pane active">
+        <div class="pane-header">
+          <h2>Configurações Globais</h2>
+          <p>Defina as ações padrão aplicadas a todas as páginas da web.</p>
+        </div>
+
+        <div class="card-grid">
+          <div class="settings-card">
+            <div class="card-header-toggle">
+              <div>
+                <h3>Proteções de Área de Transferência</h3>
+                <p>Neutraliza bloqueios de cópia, colagem e recorte no navegador.</p>
+              </div>
+            </div>
+
+            <div class="option-list">
+              <div class="option-row">
+                <div class="option-desc">
+                  <strong>Permitir Copiar & Recortar</strong>
+                  <span>Garante o funcionamento do Ctrl+C, Ctrl+X e cliques em "Copiar".</span>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="optAllowCopy" checked>
+                  <span class="switch-slider"></span>
+                </label>
+              </div>
+
+              <div class="option-row">
+                <div class="option-desc">
+                  <strong>Permitir Colar em Qualquer Campo</strong>
+                  <span>Desbloqueia inputs, textareas e campos protegidos com readonly ou scripts.</span>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="optAllowPaste" checked>
+                  <span class="switch-slider"></span>
+                </label>
+              </div>
+
+              <div class="option-row">
+                <div class="option-desc">
+                  <strong>Cópia Limpa (Anti-Marca D'água)</strong>
+                  <span>Remove automaticamente aditivos promocionais e links de "Leia mais em...".</span>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="optStripWatermark" checked>
+                  <span class="switch-slider"></span>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="settings-card">
+            <div class="card-header-toggle">
+              <div>
+                <h3>Interações com Mouse & Teclado</h3>
+                <p>Restaura o controle total sobre menus, seleção e atalhos de desenvolvedor.</p>
+              </div>
+            </div>
+
+            <div class="option-list">
+              <div class="option-row">
+                <div class="option-desc">
+                  <strong>Permitir Menu de Contexto (Botão Direito)</strong>
+                  <span>Impede sites de sequestrarem ou desativarem o clique direito.</span>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="optAllowContextMenu" checked>
+                  <span class="switch-slider"></span>
+                </label>
+              </div>
+
+              <div class="option-row">
+                <div class="option-desc">
+                  <strong>Permitir Seleção de Texto & Destaque</strong>
+                  <span>Remove todas as travas CSS (user-select: none) e manipulações de seleção.</span>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="optAllowSelection" checked>
+                  <span class="switch-slider"></span>
+                </label>
+              </div>
+
+              <div class="option-row">
+                <div class="option-desc">
+                  <strong>Permitir Arrastar & Soltar (Drag & Drop)</strong>
+                  <span>Restaura a capacidade de arrastar textos e imagens para outras abas/apps.</span>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="optAllowDrag" checked>
+                  <span class="switch-slider"></span>
+                </label>
+              </div>
+
+              <div class="option-row">
+                <div class="option-desc">
+                  <strong>Liberar Atalhos de Teclado & F12 DevTools</strong>
+                  <span>Impede sites de bloquearem Ctrl+U, Ctrl+S, Ctrl+P e F12 (Inspecionar).</span>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="optAllowShortcuts" checked>
+                  <span class="switch-slider"></span>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="settings-card">
+            <div class="card-header-toggle">
+              <div>
+                <h3>Recursos Avançados & Notificações</h3>
+                <p>Recursos especiais para provas online, formulários e notificações visuais.</p>
+              </div>
+            </div>
+
+            <div class="option-list">
+              <div class="option-row">
+                <div class="option-desc">
+                  <strong>Bypass de Detecção de Foco / Aba Oculta</strong>
+                  <span>Engana sites que tentam punir ou bloquear quando você sai da página ou troca de aba.</span>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="optBypassVisibility">
+                  <span class="switch-slider"></span>
+                </label>
+              </div>
+
+              <div class="option-row">
+                <div class="option-desc">
+                  <strong>Exibir Notificações Flutuantes (Toasts)</strong>
+                  <span>Exibe um aviso elegante ao alternar modos ou copiar elementos com o seletor.</span>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="optShowToasts" checked>
+                  <span class="switch-slider"></span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Domain Rules Tab -->
+      <section id="tab-domains" class="tab-pane">
+        <div class="pane-header">
+          <h2>Regras por Domínio</h2>
+          <p>Configure regras individuais personalizadas para sites específicos.</p>
+        </div>
+
+        <div class="domain-manager-card">
+          <div class="add-domain-form">
+            <input type="text" id="inputNewDomain" placeholder="exemplo.com.br" class="domain-input">
+            <select id="selectDomainMode" class="domain-select">
+              <option value="enabled">Desbloquear (Inteligente)</option>
+              <option value="force">Desbloquear (Força Bruta Ultra)</option>
+              <option value="disabled">Desativar neste site</option>
+            </select>
+            <button id="btnAddDomain" class="btn-primary">Adicionar Regra</button>
+          </div>
+
+          <div class="domain-table-wrapper">
+            <table class="domain-table">
+              <thead>
+                <tr>
+                  <th>Domínio</th>
+                  <th>Status</th>
+                  <th>Modo</th>
+                  <th>Ações</th>
+                </tr>
+              </thead>
+              <tbody id="domainListBody">
+                <!-- Dynamically filled -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- Shortcuts Tab -->
+      <section id="tab-shortcuts" class="tab-pane">
+        <div class="pane-header">
+          <h2>Atalhos de Teclado</h2>
+          <p>Controle rapidamente o desbloqueador sem abrir o menu.</p>
+        </div>
+
+        <div class="shortcuts-card">
+          <div class="shortcut-item">
+            <div class="shortcut-info">
+              <strong>Alternar Desbloqueio no Site Atual</strong>
+              <span>Liga ou desliga instantaneamente o desbloqueio no site que você está navegando.</span>
+            </div>
+            <kbd>Alt + Shift + U</kbd>
+          </div>
+
+          <div class="shortcut-item">
+            <div class="shortcut-info">
+              <strong>Alternar Modo Força Bruta (Ultra)</strong>
+              <span>Ativa o modo destrutivo contra camadas invisíveis e proteções extremas.</span>
+            </div>
+            <kbd>Alt + Shift + F</kbd>
+          </div>
+
+          <div class="shortcut-item">
+            <div class="shortcut-info">
+              <strong>Seletor Visual de Elemento</strong>
+              <span>Ativa a mira para clicar em qualquer parte da tela e copiar o texto.</span>
+            </div>
+            <kbd>Alt + Shift + P</kbd>
+          </div>
+
+          <div class="shortcut-custom-hint">
+            <p>Você pode personalizar esses atalhos na página nativa do Chrome digitando <code>chrome://extensions/shortcuts</code> na barra de endereços.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Backup Tab -->
+      <section id="tab-backup" class="tab-pane">
+        <div class="pane-header">
+          <h2>Backup & Sincronização</h2>
+          <p>Exporte suas preferências ou restaure suas configurações em outro computador.</p>
+        </div>
+
+        <div class="backup-card">
+          <div class="backup-actions">
+            <button id="btnExportConfig" class="btn-primary">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                <polyline points="7 10 12 15 17 10"/>
+                <line x1="12" y1="15" x2="12" y2="3"/>
+              </svg>
+              <span>Exportar Configurações (JSON)</span>
+            </button>
+            <label class="btn-secondary">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                <polyline points="17 8 12 3 7 8"/>
+                <line x1="12" y1="3" x2="12" y2="15"/>
+              </svg>
+              <span>Importar Arquivo JSON</span>
+              <input type="file" id="fileImportConfig" accept=".json" style="display: none;">
+            </label>
+            <button id="btnResetConfig" class="btn-danger">Restaurar Padrões de Fábrica</button>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div id="saveToast" class="save-toast">Configurações salvas com sucesso!</div>
+
+  <script src="options.js"></script>
+</body>
+</html>

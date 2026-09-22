@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Super Allow Copy & Paste Pro</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <header class="header">
+      <div class="brand">
+        <div class="logo-badge">
+          <svg class="icon-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            <path d="m9 12 2 2 4-4"/>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <h1>Super Allow Copy</h1>
+          <span class="version-tag">PRO</span>
+        </div>
+      </div>
+      <button id="btnOptions" class="btn-icon" title="Configurações Avançadas">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="3"/>
+          <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+        </svg>
+      </button>
+    </header>
+
+    <!-- Main Domain Control Card -->
+    <div class="domain-card">
+      <div class="domain-info">
+        <span class="domain-label">Site Atual:</span>
+        <span id="currentDomain" class="domain-name">carregando...</span>
+      </div>
+      <label class="master-switch">
+        <input type="checkbox" id="siteToggle" checked>
+        <span class="slider"></span>
+      </label>
+    </div>
+
+    <!-- Mode Selector -->
+    <div class="mode-selector">
+      <button id="btnSmartMode" class="mode-btn active" title="Desbloqueio padrão sem quebrar editores complexos">
+        <span class="mode-icon">⚡</span>
+        <div class="mode-text">
+          <span class="mode-title">Inteligente</span>
+          <span class="mode-desc">Equilibrado</span>
+        </div>
+      </button>
+      <button id="btnForceMode" class="mode-btn" title="Remove camadas invisíveis e bloqueios extremos">
+        <span class="mode-icon">🛡️</span>
+        <div class="mode-text">
+          <span class="mode-title">Força Bruta</span>
+          <span class="mode-desc">Ultra Desbloqueio</span>
+        </div>
+      </button>
+    </div>
+
+    <!-- Quick Action Tools -->
+    <div class="quick-tools">
+      <button id="btnElementPicker" class="action-btn" title="Clique em qualquer parte da página para extrair o texto">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"/>
+          <path d="m4.93 4.93 4.24 4.24"/>
+          <path d="m14.83 9.17 4.24-4.24"/>
+          <path d="m14.83 14.83 4.24 4.24"/>
+          <path d="m9.17 14.83-4.24 4.24"/>
+          <circle cx="12" cy="12" r="3"/>
+        </svg>
+        <span>Seletor Visual</span>
+      </button>
+      <button id="btnForceCopy" class="action-btn" title="Força a cópia do texto atualmente selecionado">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+          <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+        </svg>
+        <span>Copiar Seleção</span>
+      </button>
+    </div>
+
+    <!-- Feature Toggles -->
+    <div class="features-section">
+      <div class="section-title">Proteções e Desbloqueios</div>
+      
+      <div class="feature-item">
+        <div class="feature-info">
+          <span class="feature-name">Copiar, Recortar & Colar</span>
+          <span class="feature-sub">Liberar Ctrl+C, Ctrl+V e menus de edição</span>
+        </div>
+        <label class="switch">
+          <input type="checkbox" id="toggleCopyPaste" checked>
+          <span class="switch-slider"></span>
+        </label>
+      </div>
+
+      <div class="feature-item">
+        <div class="feature-info">
+          <span class="feature-name">Menu de Contexto</span>
+          <span class="feature-sub">Liberar clique com botão direito</span>
+        </div>
+        <label class="switch">
+          <input type="checkbox" id="toggleContextMenu" checked>
+          <span class="switch-slider"></span>
+        </label>
+      </div>
+
+      <div class="feature-item">
+        <div class="feature-info">
+          <span class="feature-name">Seleção de Texto</span>
+          <span class="feature-sub">Remover user-select: none</span>
+        </div>
+        <label class="switch">
+          <input type="checkbox" id="toggleSelection" checked>
+          <span class="switch-slider"></span>
+        </label>
+      </div>
+
+      <div class="feature-item">
+        <div class="feature-info">
+          <span class="feature-name">Cópia Limpa (Sem Marca D'água)</span>
+          <span class="feature-sub">Elimina textos de "Leia mais em..."</span>
+        </div>
+        <label class="switch">
+          <input type="checkbox" id="toggleWatermark" checked>
+          <span class="switch-slider"></span>
+        </label>
+      </div>
+
+      <div class="feature-item">
+        <div class="feature-info">
+          <span class="feature-name">Atalhos & F12 DevTools</span>
+          <span class="feature-sub">Impede bloqueio de teclas e inspeção</span>
+        </div>
+        <label class="switch">
+          <input type="checkbox" id="toggleShortcuts" checked>
+          <span class="switch-slider"></span>
+        </label>
+      </div>
+
+      <div class="feature-item">
+        <div class="feature-info">
+          <span class="feature-name">Bypass de Foco / Aba Oculta</span>
+          <span class="feature-sub">Engana sites que detectam troca de aba</span>
+        </div>
+        <label class="switch">
+          <input type="checkbox" id="toggleVisibility">
+          <span class="switch-slider"></span>
+        </label>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="shortcuts-hint">
+        <span>Atalho: <code>Alt+Shift+U</code> (Alternar)</span>
+      </div>
+      <div id="statusToast" class="status-toast"></div>
+    </footer>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

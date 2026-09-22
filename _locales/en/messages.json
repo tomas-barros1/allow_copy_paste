@@ -1,0 +1,20 @@
+{
+  "extensionName": {
+    "message": "Super Allow Copy & Paste Pro - Universal Unblocker"
+  },
+  "extensionDescription": {
+    "message": "The ultimate tool to unlock copy, paste, right-click, text selection, keyboard shortcuts, and drag-and-drop on any website."
+  },
+  "statusActive": {
+    "message": "Active"
+  },
+  "statusDisabled": {
+    "message": "Disabled"
+  },
+  "smartMode": {
+    "message": "Smart Mode"
+  },
+  "forceMode": {
+    "message": "Force Mode (Ultra)"
+  }
+}

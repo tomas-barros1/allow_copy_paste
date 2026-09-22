@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Página de Teste - Desbloqueador de Cópia e Cola</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: #0f172a;
+      color: #f8fafc;
+      padding: 30px;
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    h1 {
+      color: #60a5fa;
+      margin-bottom: 8px;
+    }
+    .subtitle {
+      color: #94a3b8;
+      margin-bottom: 24px;
+    }
+    .test-box {
+      background: #1e293b;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+    .test-title {
+      font-weight: 700;
+      font-size: 16px;
+      color: #38bdf8;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .badge-lock {
+      background: #ef4444;
+      color: #fff;
+      font-size: 11px;
+      padding: 2px 8px;
+      border-radius: 4px;
+    }
+    /* Anti-selection CSS */
+    .unselectable {
+      -webkit-user-select: none !important;
+      -moz-user-select: none !important;
+      -ms-user-select: none !important;
+      user-select: none !important;
+    }
+    /* Overlay simulation */
+    .overlay-container {
+      position: relative;
+      border: 1px dashed #f59e0b;
+      padding: 15px;
+      border-radius: 6px;
+    }
+    .shield-overlay {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: transparent;
+      z-index: 10;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      background: #0f172a;
+      border: 1px solid #334155;
+      color: #fff;
+      border-radius: 6px;
+      margin-top: 8px;
+      box-sizing: border-box;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🛡️ Laboratório de Testes de Bloqueio</h1>
+    <p class="subtitle">Esta página contém os bloqueios mais agressivos utilizados na web para você testar a extensão.</p>
+
+    <!-- Test 1: Event Listener Blockers -->
+    <div class="test-box">
+      <div class="test-title">
+        <span>1. Bloqueio por Event Listeners (JS preventDefault)</span>
+        <span class="badge-lock">Bloqueado</span>
+      </div>
+      <p id="jsBlockText">
+        Este parágrafo possui bloqueadores JavaScript ativos para <code>copy</code>, <code>cut</code>, <code>contextmenu</code> e <code>selectstart</code>. Tente selecionar, copiar ou clicar com o botão direito!
+      </p>
+    </div>
+
+    <!-- Test 2: Inline HTML Event Blockers -->
+    <div class="test-box" oncontextmenu="return false;" oncopy="return false;" onselectstart="return false;" ondragstart="return false;">
+      <div class="test-title">
+        <span>2. Bloqueio por Atributos Inline (oncopy="return false")</span>
+        <span class="badge-lock">Bloqueado</span>
+      </div>
+      <p>
+        Este bloco utiliza atributos HTML nativos como <code>oncopy="return false"</code> e <code>oncontextmenu="return false"</code> diretamente na tag div.
+      </p>
+    </div>
+
+    <!-- Test 3: CSS user-select: none -->
+    <div class="test-box">
+      <div class="test-title">
+        <span>3. Bloqueio por CSS (user-select: none)</span>
+        <span class="badge-lock">Bloqueado</span>
+      </div>
+      <p class="unselectable">
+        Este texto possui a propriedade CSS <code>user-select: none !important</code>. Sem a extensão, é impossível selecionar este parágrafo com o cursor do mouse.
+      </p>
+    </div>
+
+    <!-- Test 4: Blocked Paste in Inputs -->
+    <div class="test-box">
+      <div class="test-title">
+        <span>4. Bloqueio de Colar (Anti-Paste no Input)</span>
+        <span class="badge-lock">Bloqueado</span>
+      </div>
+      <p>Tente colar qualquer texto no campo abaixo (comum em formulários bancários ou campos de confirmação):</p>
+      <input type="text" id="blockedInput" placeholder="Tente colar (Ctrl+V ou botão direito) aqui...">
+    </div>
+
+    <!-- Test 5: Invisible Click Shield Overlay -->
+    <div class="test-box">
+      <div class="test-title">
+        <span>5. Camada Transparente Invisível (Click Shield)</span>
+        <span class="badge-lock">Bloqueado</span>
+      </div>
+      <div class="overlay-container">
+        <div class="shield-overlay" id="clickShield" oncontextmenu="event.preventDefault(); return false;"></div>
+        <p>
+          Este texto está atrás de uma <code>div</code> transparente invisível com z-index elevado. Use o <strong>Modo Força Bruta</strong> ou o <strong>Seletor Visual (Alt+Shift+P)</strong> para copiá-lo facilmente!
+        </p>
+      </div>
+    </div>
+
+    <!-- Test 6: Watermark Injector Simulation -->
+    <div class="test-box">
+      <div class="test-title">
+        <span>6. Injeção de Marca D'água ("Leia mais em...")</span>
+        <span class="badge-lock">Modificado</span>
+      </div>
+      <p id="watermarkText">
+        Este texto simula portais de notícias que adicionam "Leia mais em: https://site.com/artigo..." na sua área de transferência quando você copia. O recurso <strong>Cópia Limpa</strong> elimina essa sujeira!
+      </p>
+    </div>
+  </div>
+
+  <script>
+    // 1. JS Event blocker
+    const el = document.getElementById('jsBlockText');
+    ['copy', 'cut', 'contextmenu', 'selectstart', 'dragstart'].forEach(evt => {
+      el.addEventListener(evt, e => {
+        e.preventDefault();
+        e.stopPropagation();
+        return false;
+      });
+    });
+
+    // 4. Paste blocker
+    const input = document.getElementById('blockedInput');
+    input.addEventListener('paste', e => {
+      e.preventDefault();
+      alert('Bloqueado: O site não permite colar neste campo.');
+    });
+
+    // 6. Watermark injection
+    const wm = document.getElementById('watermarkText');
+    wm.addEventListener('copy', e => {
+      const selection = window.getSelection().toString();
+      e.clipboardData.setData('text/plain', selection + '\n\n---\n[Bloqueio Detectado: Leia mais em https://site-malicioso.com/artigo-original?ref=anti_copy]');
+      e.preventDefault();
+    });
+  </script>
+</body>
+</html>
