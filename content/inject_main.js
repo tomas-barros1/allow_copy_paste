@@ -12,9 +12,9 @@
   if (window.__SUPER_ALLOW_COPY_PASTE_MAIN_INITIALIZED__) return;
   window.__SUPER_ALLOW_COPY_PASTE_MAIN_INITIALIZED__ = true;
 
-  // Active configuration state (updated via postMessage from isolated script)
+  // Active configuration state (starts disabled by default until loaded/enabled for domain)
   let config = {
-    enabled: true,
+    enabled: false,
     forceMode: false,
     allowCopy: true,
     allowPaste: true,

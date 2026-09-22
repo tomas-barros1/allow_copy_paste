@@ -4,6 +4,7 @@
 
 document.addEventListener('DOMContentLoaded', async () => {
   const currentDomainEl = document.getElementById('currentDomain');
+  const siteStatusText = document.getElementById('siteStatusText');
   const siteToggle = document.getElementById('siteToggle');
   const btnSmartMode = document.getElementById('btnSmartMode');
   const btnForceMode = document.getElementById('btnForceMode');
@@ -35,6 +36,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         currentDomainEl.textContent = currentDomain;
       } else {
         currentDomainEl.textContent = 'Página do Sistema';
+        siteStatusText.textContent = 'Desativado nesta página';
         siteToggle.disabled = true;
       }
     }
@@ -49,11 +51,12 @@ document.addEventListener('DOMContentLoaded', async () => {
       const domainOverrides = fullSettings.domainOverrides || {};
       const domainConfig = domainOverrides[currentDomain];
 
-      const isEnabled = domainConfig?.enabled ?? fullSettings.globalEnabled ?? true;
+      const isEnabled = domainConfig?.enabled ?? fullSettings.globalEnabled ?? false;
       const isForce = domainConfig?.forceMode ?? fullSettings.forceMode ?? false;
 
-      // Master switch
+      // Master switch & text
       siteToggle.checked = isEnabled;
+      updateSiteStatusDisplay(isEnabled, isForce);
 
       // Mode buttons
       if (isForce) {
@@ -74,6 +77,17 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
   }
 
+  function updateSiteStatusDisplay(isEnabled, isForce) {
+    if (!siteStatusText) return;
+    if (isEnabled) {
+      siteStatusText.textContent = isForce ? '⚡ Ativado (Força Bruta)' : '✓ Ativado neste site';
+      siteStatusText.classList.add('active');
+    } else {
+      siteStatusText.textContent = 'Desativado por padrão';
+      siteStatusText.classList.remove('active');
+    }
+  }
+
   loadAndRenderSettings();
 
   // 3. Status Toast Feedback Helper
@@ -86,7 +100,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     }, 2000);
   }
 
-  // 4. Handle Master Switch Toggle
+  // 4. Handle Master Switch Toggle (Remembers this site!)
   siteToggle.addEventListener('change', () => {
     const isEnabled = siteToggle.checked;
     const domainOverrides = { ...(fullSettings.domainOverrides || {}) };
@@ -98,8 +112,10 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     chrome.storage.sync.set({ domainOverrides }, () => {
       fullSettings.domainOverrides = domainOverrides;
+      const isForce = domainOverrides[currentDomain]?.forceMode ?? fullSettings.forceMode ?? false;
+      updateSiteStatusDisplay(isEnabled, isForce);
       notifyContentScript({ action: 'UPDATE_SETTINGS' });
-      showStatus(isEnabled ? '✓ Desbloqueio ativado!' : '✕ Desbloqueio desativado');
+      showStatus(isEnabled ? '✓ Salvo: Ativado neste site' : 'Salvo: Desativado');
     });
   });
 

@@ -4,7 +4,7 @@
 
 document.addEventListener('DOMContentLoaded', () => {
   const DEFAULT_SETTINGS = {
-    globalEnabled: true,
+    globalEnabled: false,
     forceMode: false,
     allowCopy: true,
     allowPaste: true,
@@ -36,6 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // Inputs
+  const optGlobalEnabled = document.getElementById('optGlobalEnabled');
   const optAllowCopy = document.getElementById('optAllowCopy');
   const optAllowPaste = document.getElementById('optAllowPaste');
   const optStripWatermark = document.getElementById('optStripWatermark');
@@ -72,6 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
     chrome.storage.sync.get(DEFAULT_SETTINGS, (items) => {
       currentSettings = { ...DEFAULT_SETTINGS, ...items };
 
+      optGlobalEnabled.checked = currentSettings.globalEnabled ?? false;
       optAllowCopy.checked = currentSettings.allowCopy;
       optAllowPaste.checked = currentSettings.allowPaste;
       optStripWatermark.checked = currentSettings.stripWatermark;
@@ -95,6 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Bind checkboxes
   const checkboxes = [
+    { el: optGlobalEnabled, key: 'globalEnabled' },
     { el: optAllowCopy, key: 'allowCopy' },
     { el: optAllowPaste, key: 'allowPaste' },
     { el: optStripWatermark, key: 'stripWatermark' },
@@ -241,10 +244,10 @@ document.addEventListener('DOMContentLoaded', () => {
   // Reset Configuration
   btnResetConfig.addEventListener('click', () => {
     if (confirm('Tem certeza que deseja restaurar todas as configurações para o padrão de fábrica?')) {
-      currentSettings = { ...DEFAULT_SETTINGS };
+      currentSettings = { ...DEFAULT_SETTINGS, globalEnabled: false, domainOverrides: {} };
       saveCurrentSettings();
       loadSettings();
-      showSaved('Configurações restauradas para o padrão.');
+      showSaved('Configurações restauradas para o padrão (Desligado por padrão).');
     }
   });
 

@@ -10,9 +10,9 @@
   if (window.__SUPER_ALLOW_COPY_PASTE_ISOLATED_INITIALIZED__) return;
   window.__SUPER_ALLOW_COPY_PASTE_ISOLATED_INITIALIZED__ = true;
 
-  // Global & Per-domain default settings
+  // Global & Per-domain default settings (Disabled by default, remembers user-activated sites)
   const DEFAULT_SETTINGS = {
-    globalEnabled: true,
+    globalEnabled: false,
     forceMode: false,
     allowCopy: true,
     allowPaste: true,
@@ -23,12 +23,12 @@
     stripWatermark: true,
     bypassVisibility: false,
     showToasts: true,
-    domainOverrides: {} // { "example.com": { enabled: true, forceMode: true } }
+    domainOverrides: {} // { "example.com": { enabled: true, forceMode: false } }
   };
 
   let currentSettings = { ...DEFAULT_SETTINGS };
   let currentDomain = window.location.hostname || 'localhost';
-  let isEffectiveEnabled = true;
+  let isEffectiveEnabled = false;
   let isEffectiveForceMode = false;
   let mutationObserver = null;
   let styleElement = null;

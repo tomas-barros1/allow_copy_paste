@@ -8,23 +8,27 @@
 
 Muitos sites tentam impedir os usuários de copiar textos, colar senhas em formulários ou clicar com o botão direito através de múltiplos níveis de bloqueio. O **Super Allow Copy & Paste Pro** opera simultaneamente no **Contexto Principal da Página (MAIN World)** e no **Contexto Isolado da Extensão (ISOLATED World)** no padrão moderno **Manifest V3**, quebrando todas as barreiras conhecidas:
 
-1. **⚡ Interceptação de Protótipos Nativos (`EventTarget`, `Event`, `ClipboardData`)**:
+1. **🔒 Desligado por Padrão & Memória Inteligente por Site**:
+   - Por padrão, a extensão **vem desligada** em todos os sites para garantir máxima privacidade e não interferir em nada na sua navegação comum.
+   - Quando você estiver em um site com bloqueio e ativar a extensão (pelo popup ou pelo atalho `Alt + Shift + U`), **a extensão lembra daquele site** para sempre.
+   - Nas próximas visitas àquele domínio, o desbloqueio já estará automaticamente ativo.
+2. **⚡ Interceptação de Protótipos Nativos (`EventTarget`, `Event`, `ClipboardData`)**:
    - Sobrescreve `Event.prototype.preventDefault` e `stopPropagation` para que scripts maliciosos não consigam cancelar ações legítimas do usuário.
    - Neutraliza interceptações de `copy`, `cut`, `paste`, `contextmenu`, `selectstart` e `dragstart`.
-2. **🧹 Cópia Limpa (Anti-Marca D'água)**:
+3. **🧹 Cópia Limpa (Anti-Marca D'água)**:
    - Intercepta `DataTransfer.prototype.setData` para remover automaticamente sufixos chatos de *"Leia mais em https://..."* ou textos promocionais injetados na sua área de transferência.
-3. **🛡️ Dois Modos de Operação**:
+4. **🛡️ Dois Modos de Ação**:
    - **Modo Inteligente (Padrão)**: Desbloqueia o uso sem quebrar aplicativos e editores complexos (Google Docs, Figma, Monaco Editor, Notion).
    - **Modo Força Bruta (Ultra)**: Destrói todas as camadas invisíveis (*click shields* e *overlays transparentes*), limpa atributos inline e força a desativação de qualquer script anti-cópia.
-4. **🎯 Seletor Visual de Elemento (*Element Picker*)**:
+5. **🎯 Seletor Visual de Elemento (*Element Picker*)**:
    - Uma ferramenta interativa com mira que permite passar o mouse sobre **qualquer** elemento na tela e copiá-lo imediatamente com 1 clique, mesmo se estiver em Canvas ou Shadow DOM.
-5. **🔓 Desbloqueio de Campos de Entrada e Inputs Protegidos**:
+6. **🔓 Desbloqueio de Campos de Entrada e Inputs Protegidos**:
    - Permite colar em campos bancários, formulários de exames e campos de confirmação com `readonly` ou manipuladores anti-paste.
-6. **🕶️ Bypass de Detecção de Aba Oculta / Foco (Anti-Cheat / Anti-Blur)**:
+7. **🕶️ Bypass de Detecção de Aba Oculta / Foco (Anti-Cheat / Anti-Blur)**:
    - Impede que sites detectem quando você troca de aba ou tira o foco da janela.
-7. **⌨️ Atalhos Rápidos & Menus de Contexto**:
+8. **⌨️ Atalhos Rápidos & Menus de Contexto**:
    - Controle total pelo teclado ou pelo menu do botão direito.
-8. **🌐 Gerenciador de Regras por Domínio & Backup JSON**:
+9. **🌐 Gerenciador de Regras por Domínio & Backup JSON**:
    - Configure regras específicas para cada site e exporte/importe suas configurações com facilidade.
 
 ---

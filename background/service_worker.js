@@ -4,7 +4,7 @@
  */
 
 const DEFAULT_SETTINGS = {
-  globalEnabled: true,
+  globalEnabled: false,
   forceMode: false,
   allowCopy: true,
   allowPaste: true,
@@ -21,9 +21,14 @@ const DEFAULT_SETTINGS = {
 /**
  * On Installation: setup storage and context menus
  */
-chrome.runtime.onInstalled.addListener(() => {
+chrome.runtime.onInstalled.addListener((details) => {
   chrome.storage.sync.get(DEFAULT_SETTINGS, (items) => {
-    chrome.storage.sync.set({ ...DEFAULT_SETTINGS, ...items });
+    const settings = { ...DEFAULT_SETTINGS, ...items };
+    if (details.reason === 'install') {
+      settings.globalEnabled = false;
+      settings.domainOverrides = {};
+    }
+    chrome.storage.sync.set(settings);
   });
 
   setupContextMenus();
@@ -167,8 +172,7 @@ function updateTabBadge(tab) {
       const isForce = override?.forceMode ?? settings.forceMode;
 
       if (!isEnabled) {
-        chrome.action.setBadgeText({ tabId: tab.id, text: 'OFF' });
-        chrome.action.setBadgeBackgroundColor({ tabId: tab.id, color: '#64748b' });
+        chrome.action.setBadgeText({ tabId: tab.id, text: '' });
       } else if (isForce) {
         chrome.action.setBadgeText({ tabId: tab.id, text: '⚡' });
         chrome.action.setBadgeBackgroundColor({ tabId: tab.id, color: '#eab308' });

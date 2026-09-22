@@ -153,6 +153,17 @@ body {
   text-overflow: ellipsis;
 }
 
+.site-status-hint {
+  font-size: 11px;
+  color: var(--text-dim);
+  margin-top: 1px;
+}
+
+.site-status-hint.active {
+  color: #34d399;
+  font-weight: 500;
+}
+
 /* Master Switch */
 .master-switch {
   position: relative;
